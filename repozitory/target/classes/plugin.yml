@@ -1,0 +1,39 @@
+name: PhantomPacts
+version: '1.0'
+main: me.org2.phantomPacts.PhantomPacts
+api-version: '1.20'
+author: nonentity1732
+description: Система пактов между игроками с призрачными свитками
+
+softdepend:
+  - PlaceholderAPI
+  - LuckPerms
+
+commands:
+  pact:
+    description: Управление пактами
+    usage: /pact <offer|accept|decline|list|break>
+    aliases: [pacts, contract]
+
+  pactadmin:
+    description: Административные команды пактов
+    usage: /pactadmin <reload|force|clear>
+    permission: phantompacts.admin
+    aliases: [padmin]
+
+permissions:
+  phantompacts.admin:
+    description: Полный доступ к административным командам
+    default: op
+
+  phantompacts.use:
+    description: Использование системы пактов
+    default: true
+
+  phantompacts.findscroll:
+    description: Возможность находить свитки
+    default: true
+
+  phantompacts.bypass:
+    description: Обход наказаний за нарушение пакта
+    default: op

@@ -1,0 +1,99 @@
+# PhantomPacts Configuration
+
+# Настройки спавна свитков
+scrolls:
+  # Интервал проверки спавна (в тиках, 20 тиков = 1 секунда)
+  spawn-check-interval: 6000
+  # Шанс спавна свитка при проверке (0.0-1.0)
+  spawn-chance: 0.3
+  # Максимальное количество свитков в мире одновременно
+  max-scrolls: 10
+  # Время жизни свитка в секундах
+  lifetime: 300
+  # Миры, где могут спавниться свитки
+  allowed-worlds:
+    - world
+    - world_nether
+    - world_the_end
+
+# Типы пактов
+pact-types:
+  peace:
+    name: "Пакт Мира"
+    description: "Не атаковать друг друга"
+    duration: 86400 # 24 часа в секундах
+    enabled: true
+
+  alliance:
+    name: "Пакт Альянса"
+    description: "Помогать друг другу в бою"
+    duration: 43200 # 12 часов
+    enabled: true
+
+  trade:
+    name: "Торговый Пакт"
+    description: "Делиться добычей 50/50"
+    duration: 21600 # 6 часов
+    enabled: true
+
+  protection:
+    name: "Пакт Защиты"
+    description: "Защищать территорию союзника"
+    duration: 172800 # 48 часов
+    enabled: true
+
+# Наказания за нарушение пакта
+punishments:
+  # Спавн фантомов вокруг нарушителя
+  spawn-phantoms:
+    enabled: true
+    amount: 5
+
+  # Потеря случайных предметов из инвентаря
+  drop-items:
+    enabled: true
+    percentage: 30 # Процент предметов для дропа
+
+  # Наложение негативных эффектов
+  effects:
+    enabled: true
+    effects-list:
+      - "WITHER:200:1"
+      - "WEAKNESS:400:1"
+      - "SLOWNESS:600:2"
+
+  # Временный бан
+  temp-ban:
+    enabled: false
+    duration: 3600 # В секундах (1 час)
+
+  # Потеря опыта
+  remove-exp:
+    enabled: true
+    levels: 10
+
+# Сообщения
+messages:
+  prefix: "&8[&5PhantomPacts&8]&r"
+  scroll-found: "&aВы нашли &dПризрачный Свиток&a! Используйте &e/pact offer <игрок>"
+  pact-offered: "&aВы предложили пакт &e%type%&a игроку &e%player%"
+  pact-received: "&e%player%&a предлагает вам пакт &e%type%&a. Используйте &e/pact accept &aили &c/pact decline"
+  pact-accepted: "&aПакт &e%type%&a заключён с &e%player%&a на &e%duration%"
+  pact-declined: "&cПакт отклонён"
+  pact-expired: "&eВаш пакт с &e%player%&e истёк"
+  pact-broken: "&c%player%&c нарушил пакт! Призываем возмездие..."
+  no-scroll: "&cУ вас нет призрачного свитка!"
+  no-pact: "&cУ вас нет активного пакта с этим игроком"
+  player-offline: "&cИгрок не в сети"
+  already-pact: "&cУ вас уже есть активный пакт с этим игроком"
+
+# PlaceholderAPI
+placeholders:
+  enabled: true
+
+# LuckPerms интеграция
+luckperms:
+  # Давать права при активном пакте
+  grant-permissions: true
+  # Группа для игроков в пакте
+  pact-group: "pact_member"
